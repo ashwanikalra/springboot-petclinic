@@ -1,10 +1,9 @@
 package com.learning.springpetclinicdemo.service;
 
-import co.learning.springpetclinicdemo.entity.Owner;
-import co.learning.springpetclinicdemo.repository.OwnerRepository;
+import com.learning.springpetclinicdemo.entity.Owner;
+import com.learning.springpetclinicdemo.repository.OwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,23 +22,23 @@ public class OwnerService {
         return ownerRepository.findAll();
     }
 
-    public Owner getOwnerById(Integer id){
-        Optional<Owner> optionalEmployee=ownerRepository.findById(id);
-        Owner owner=null;
-        if(optionalEmployee.isPresent()){
-            owner=optionalEmployee.get();
-        }else {
-            throw new RuntimeException("Employee not found for id: " +id);
+    public Owner getOwnerById(Integer id) {
+        Optional<Owner> optionalEmployee = ownerRepository.findById(id);
+        Owner owner = null;
+        if (optionalEmployee.isPresent()) {
+            owner = optionalEmployee.get();
+        } else {
+            throw new RuntimeException("Employee not found for id: " + id);
         }
         return owner;
     }
 
     public void saveOwner(Owner owner) {
 
-         this.ownerRepository.save(owner);
+        this.ownerRepository.save(owner);
     }
 
-    public List<Owner> findAllOwners(){
+    public List<Owner> findAllOwners() {
         return ownerRepository.findAll();
     }
 

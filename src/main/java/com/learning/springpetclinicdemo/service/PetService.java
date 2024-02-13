@@ -1,8 +1,7 @@
 package com.learning.springpetclinicdemo.service;
 
-import co.learning.springpetclinicdemo.entity.Owner;
-import co.learning.springpetclinicdemo.entity.Pet;
-import co.learning.springpetclinicdemo.repository.PetRepository;
+import com.learning.springpetclinicdemo.entity.Pet;
+import com.learning.springpetclinicdemo.repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +15,7 @@ public class PetService {
 
     public void savePet(Pet pet) {
 
-         this.petRepository.save(pet);
+        this.petRepository.save(pet);
     }
 
     public List<Pet> getAllPets() {
