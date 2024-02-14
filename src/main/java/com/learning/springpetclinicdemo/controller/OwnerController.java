@@ -3,6 +3,7 @@ package com.learning.springpetclinicdemo.controller;
 import com.learning.springpetclinicdemo.entity.Owner;
 import com.learning.springpetclinicdemo.service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +37,7 @@ public class OwnerController {
 
     //shows list of owners
     @GetMapping("/find")
+    @PreAuthorize("hasRole('pet-admin')")
     public String findAllOwner(Model model) {
         model.addAttribute("listOwners", ownerService.findAllOwners());
         return "findOwners";
