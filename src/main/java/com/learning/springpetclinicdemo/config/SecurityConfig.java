@@ -33,9 +33,6 @@ public class SecurityConfig {
 
     private SecurityFilterChain getFilterChainNew(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
-            .authorizeHttpRequests(auth -> auth.requestMatchers("/owners/find")
-                                               .permitAll().anyRequest().authenticated())
-
             .oauth2ResourceServer((oauth2Resourceserver) -> oauth2Resourceserver.jwt(
                     (jwtConfigurer -> jwtConfigurer.decoder(jwtDecoder()).jwtAuthenticationConverter(jwtAuthConverter))));
 
