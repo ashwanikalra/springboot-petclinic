@@ -1,0 +1,14 @@
+server:
+  port: 8085
+  servlet:
+    context-path: /petclinic
+spring:
+  datasource:
+    url: ${PETCLINIC_DB_URL}
+    username: ${PETCLINIC_DB_USERNAME}
+    password: ${PETCLINIC_DB_PWD}
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+      dialect: org.hibernate.dialect.PostgreSQLDialect
