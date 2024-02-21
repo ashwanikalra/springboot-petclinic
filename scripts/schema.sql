@@ -1,31 +1,40 @@
-
-
 CREATE TABLE IF NOT EXISTS types (
-  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(80),
-  INDEX(name)
-) engine=InnoDB;
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(80)
+);
+
+CREATE INDEX IF NOT EXISTS types_name_index ON types (name);
 
 CREATE TABLE IF NOT EXISTS owners (
-  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   first_name VARCHAR(30),
   last_name VARCHAR(30),
   address VARCHAR(255),
   city VARCHAR(80),
-  telephone VARCHAR(20),
-  INDEX(last_name)
-) engine=InnoDB;
+  telephone VARCHAR(20)
+);
+
+CREATE INDEX IF NOT EXISTS owners_last_name_index ON owners (last_name);
 
 CREATE TABLE IF NOT EXISTS pets (
-  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   name VARCHAR(30),
   birth_date DATE,
-  type_id INT(4) UNSIGNED NOT NULL,
-  owner_id INT(4) UNSIGNED,
-  INDEX(name),
-  FOREIGN KEY (owner_id) REFERENCES owners(id)
+  type_id INT NOT NULL REFERENCES types(id),
+  owner_id INT REFERENCES owners(id)
+);
 
-) engine=InnoDB;
+CREATE INDEX IF NOT EXISTS pets_name_index ON pets (name);
 
+GRANT ALL PRIVILEGES ON SCHEMA keycloak TO kcadmin;
+GRANT ALL PRIVILEGES ON SCHEMA petclinic TO petclinic;
+GRANT USAGE ON SCHEMA petclinic TO petclinic;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA petclinic TO petclinic;
 
+GRANT USAGE, SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA petclinic to petclinic;
+
+# future tables and schema permissions
+alter default privileges in schema petclinic GRANT USAGE, SELECT, UPDATE ON SEQUENCES to petclinic;
+
+alter default privileges in schema petclinic GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO petclinic;
 

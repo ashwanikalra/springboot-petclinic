@@ -18,7 +18,7 @@ public class OwnerService {
         return ownerRepository.findOwnersByLastName(lastName);
     }
 
-    public List<Owner> getAllOwner() {
+    public List<Owner> getAllOwners() {
         return ownerRepository.findAll();
     }
 
