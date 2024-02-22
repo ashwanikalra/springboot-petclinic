@@ -35,10 +35,7 @@ public class Owner {
     @NotBlank
     private String telephone;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "owner_id")
-    @OrderBy("name")
-    private Set<Pet> pets;
+
 
     public Owner(String firstName, String lastName, String address, String city, String telephone) {
         this.firstName = firstName;
@@ -46,5 +43,9 @@ public class Owner {
         this.address = address;
         this.city = city;
         this.telephone = telephone;
+    }
+
+    public String getFirstName() {
+        return firstName;
     }
 }

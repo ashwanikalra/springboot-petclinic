@@ -1,6 +1,15 @@
-server:
-  port: 8085
 spring:
+  profiles:
+    active: test
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  server:
+    port: 8085
+
   datasource:
     url: ${PETCLINIC_DB_URL}
     username: ${PETCLINIC_DB_USERNAME}
@@ -9,4 +18,21 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: none
-      dialect: org.hibernate.dialect.PostgreSQLDialect
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: test
+  server:
+    port: 8085
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+    jpa:
+      hibernate:
+        ddl-auto: create-drop
