@@ -1,12 +1,12 @@
 spring:
   profiles:
-    active: test
+    active: dev
 
 ---
 spring:
   config:
     activate:
-      on-profile: test
+      on-profile: dev
   server:
     port: 8085
 
@@ -20,19 +20,30 @@ spring:
       ddl-auto: none
 
 ---
-
+#
+debug: true
 spring:
-  config:
-    activate:
-      on-profile: test
-  server:
-    port: 8085
 
+#  config:
+#    activate:
+#      on-profile: test
+#  server:
+#    port: 8085
+#
   datasource:
     url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver
     username: sa
     password: password
     jpa:
+      database-platform: org.hibernate.dialect.H2
       hibernate:
-        ddl-auto: create-drop
+        ddl-auto: none
+logging:
+  level:
+    org:
+      hibernate: INFO
+      springframework:
+        data:
+          jpa: INFO
+        jdbc: DEBUG

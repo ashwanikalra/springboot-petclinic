@@ -69,6 +69,9 @@
 	<profiles>
 		<profile>
 			<id>unit-test</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<properties>
 				<test.pattern>**/*Test.java</test.pattern>
 			</properties>

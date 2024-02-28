@@ -23,6 +23,7 @@ public class OwnerController {
 
     @GetMapping("")
     public List<Owner> getAllOwners() {
+
         return ownerService.getAllOwners();
     }
 
