@@ -4,6 +4,7 @@ package com.learning.springpetclinicdemo.controller;
 import com.learning.springpetclinicdemo.entity.Owner;
 import com.learning.springpetclinicdemo.service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,7 +29,7 @@ public class OwnerController {
     }
 
     @GetMapping("/findOwnerByLastName/{lastName}")
-    public List<Owner> findOwnerByLastName(@RequestParam String lastName ) {
+    public List<Owner> findOwnerByLastName(@RequestParam String lastName) {
         List<Owner> owners = ownerService.findOwnersByLastName(lastName);
         return owners;
     }
@@ -39,8 +40,8 @@ public class OwnerController {
         return owner;
     }
 
-    @PostMapping("/saveOwner")
-    public String saveOwner(@RequestBody Owner owner) {
+    @PostMapping("")
+    public String saveOwner(@Validated @RequestBody Owner owner) {
         ownerService.saveOwner(owner);
         return "Owner with saved Sucssessfully";
     }

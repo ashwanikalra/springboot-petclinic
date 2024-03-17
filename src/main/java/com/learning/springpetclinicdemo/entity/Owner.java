@@ -1,10 +1,17 @@
 package com.learning.springpetclinicdemo.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-import lombok.*;
-
-import java.util.Set;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Getter
@@ -20,7 +27,8 @@ public class Owner {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotBlank
+    @Getter
+    @NotBlank(message = "{NotBlank.owner.firstName}")
     private String firstName;
 
     @NotBlank
@@ -36,7 +44,6 @@ public class Owner {
     private String telephone;
 
 
-
     public Owner(String firstName, String lastName, String address, String city, String telephone) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -45,7 +52,4 @@ public class Owner {
         this.telephone = telephone;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
 }

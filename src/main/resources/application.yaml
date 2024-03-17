@@ -3,12 +3,14 @@ spring:
     active: dev
 
 ---
+
+server:
+  port: 8085
+
 spring:
   config:
     activate:
       on-profile: dev
-  server:
-    port: 8085
 
   datasource:
     url: ${PETCLINIC_DB_URL}
@@ -23,13 +25,12 @@ spring:
 #
 debug: true
 spring:
+  config:
+    activate:
+      on-profile: test
+  server:
+    port: 8085
 
-#  config:
-#    activate:
-#      on-profile: test
-#  server:
-#    port: 8085
-#
   datasource:
     url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver
@@ -47,3 +48,4 @@ logging:
         data:
           jpa: INFO
         jdbc: DEBUG
+---
