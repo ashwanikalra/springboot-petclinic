@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>co.learning</groupId>
 	<artifactId>spring-petclinic-demo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1-SNAPSHOT</version>
 	<name>spring-petclinic-demo</name>
 	<description>spring-petclinic-demo</description>
 	<properties>

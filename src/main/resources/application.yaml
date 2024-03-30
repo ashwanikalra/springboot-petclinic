@@ -17,35 +17,33 @@ spring:
     username: ${PETCLINIC_DB_USERNAME}
     password: ${PETCLINIC_DB_PWD}
   jpa:
+    open-in-view: false
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: none
 
 ---
-#
-debug: true
+
+server:
+  port: 8085
+
+#debug: true
 spring:
   config:
     activate:
       on-profile: test
-  server:
-    port: 8085
 
   datasource:
     url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver
     username: sa
     password: password
-    jpa:
-      database-platform: org.hibernate.dialect.H2
-      hibernate:
-        ddl-auto: none
-logging:
-  level:
-    org:
-      hibernate: INFO
-      springframework:
-        data:
-          jpa: INFO
-        jdbc: DEBUG
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+
+
+
 ---
