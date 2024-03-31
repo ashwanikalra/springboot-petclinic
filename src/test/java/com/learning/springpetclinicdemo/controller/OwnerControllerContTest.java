@@ -23,16 +23,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Testcontainers
-public class OwnerControllerTestContainerIT {
+public class OwnerControllerContTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Container
-    private static final MySQLContainer<?> mySQLContainer = new MySQLContainer<>("mysql:8.0")
-            .withInitScript("schema.sql");
-    //giving data sql will does not work. Gives table not found
-    //.withInitScript("data.sql");
+    private static final MySQLContainer<?> mySQLContainer = new MySQLContainer<>("mysql:8.0");
+    // only one script file it takes.
+            //.withInitScript("schema.sql");
+
+
 
 
 

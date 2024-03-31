@@ -39,11 +39,43 @@ spring:
     username: sa
     password: password
 
+
+
+  sql:
+    init:
+      # default is always for embedded db. Other values are embedded, never
+      mode: embedded
+      schema-locations:
+        - classpath:schema_h2.sql
+
   jpa:
     open-in-view: false
     hibernate:
       ddl-auto: none
 
+---
 
+server:
+  port: 8085
+
+#debug: true
+spring:
+  config:
+    activate:
+      on-profile: test-cont
+  sql:
+    init:
+      # default is always for embedded db. Other values are embedded, never
+      # to execute the db scripts automatically by spring.
+      mode: always
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+
+logging:
+  level:
+    #org.testcontainers.ext: INFO
+    org.springframework.jdbc: TRACE
 
 ---
